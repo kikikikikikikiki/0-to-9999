@@ -1,10 +1,3 @@
-def number_to_english(num):
-    numbers = ["zero","one","two","three","four","five","six","seven","eight","nine"]
-    tens = ["ten","twenty","thirty","forty"]
-    uniques = ["eleven","twelve","thirteen","fif"]
-    values = ["thousand","hundred","teen","een","ty","y"]
-    x = 0
-    
 def tens(num):
     n = '{:04}'.format(num)
     if int(list(str(n))[::-1][0])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][3]) == 0:
@@ -246,15 +239,14 @@ def thousands(num):
     else:
         n = '{:04}'.format(num)
         if int(list(str(n))[::-1][0]) + int(list(str(n))[::-1][1]) + int(list(str(n))[::-1][2]) + int(list(str(n))[::-1][3]) == 1:
-            return ("one thousand")
+            print ("one thousand")
         if int(list(str(n))[::-1][1]) + int(list(str(n))[::-1][2]) + int(list(str(n))[::-1][3]) >= 2:
             if int(list(str(n))[::-1][0]) != 0:
-                #print (str(tens(int(''.join(str(num)[0]))))+" thousand"+str(hundreds(int(''.join(list((str(num))[1:4:])))))+"and"+str(tens(int(''.join(list((str(num))[1:4:]))))))
-                return (str(tens(int(''.join(str(num)[0]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
+                print (str(tens(int(''.join(str(num)[0]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
             else:
-                return (str(tens(int(''.join(str(num)[0]))))+" thousand")
+                print (str(tens(int(''.join(str(num)[0]))))+" thousand")
         
-for x in range(1000):
+for x in range(9999):
     thousands(x)
     
 
