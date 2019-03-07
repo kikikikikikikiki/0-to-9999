@@ -2,7 +2,6 @@ def tens(num):
     #Formats num into a four digit number e.g. num = 1 -> n = 0001
     #The number is to be z
     n = '{:04}'.format(num)
-    print(n)
     if int(list(str(n))[::-1][0])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][3]) == 0:
                 return("zero")
     elif int(list(str(n))[::-1][0])+int(list(str(n))[::-1][1]) == 1:
@@ -238,20 +237,31 @@ def hundreds(num):
 
 def thousands(num):
     n = '{:04}'.format(num)
-    print(int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]))
     if num < 1000:
         print(hundreds(num))
     else:
         n = '{:04}'.format(num)
         if int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
             if int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 100:
-                print (str(tens(int(''.join(str(num)[0]))))+" thousand and "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
+                return (str(tens(int(''.join(str(num)[0]))))+" thousand and "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
             else:
-                print (str(tens(int(''.join(str(num)[0]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
+                return (str(tens(int(''.join(str(num)[0]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
         else:
-            print (str(tens(int(''.join(str(num)[0]))))+" thousand")
-    
+            return (str(tens(int(''.join(str(num)[0]))))+" thousand")
 
-thousands(1401)
+def plusthousands(num):
+    if num < 10000:
+        print(thousands(num))
+    else:
+        n = '{:05}'.format(num)
+        if int(list(str(n))[::-1][3])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
+            if int(list(str(n))[::-1][3]+list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 1000:
+                print (str(hundreds(int(''.join(str(num)[0:2]))))+" thousand and "+str(hundreds(int(''.join(list((str(num))[2:5:]))))))
+            else:
+                print (str(hundreds(int(''.join(str(num)[0:2]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[2:5:]))))))
+        else:
+            print (str(tens(int(''.join(str(num)[0:2]))))+" thousand")
+            
+plusthousands(94999)
     
 
