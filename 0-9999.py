@@ -251,7 +251,7 @@ def thousands(num):
 
 def tenthousands(num):
     if num < 10000:
-        print(thousands(num))
+        return(thousands(num))
     else:
         n = '{:05}'.format(num)
         if int(list(str(n))[::-1][3])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
@@ -264,22 +264,31 @@ def tenthousands(num):
 
 def hundredthousands(num):
     if num < 100000:
-        print(tenthousands(num))
+        return(tenthousands(num))
     else:
         n = '{:06}'.format(num)
         if int(list(str(n))[::-1][4])+int(list(str(n))[::-1][3])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
             if int(list(str(n))[::-1][3]+list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 1000:
                 if int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 100:
-                    print (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand and "+str(tens(int(''.join(list((str(num))[3:6:]))))))
+                    return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand and "+str(tens(int(''.join(list((str(num))[3:6:]))))))
                 else:
-                    print (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand "+str(hundreds(int(''.join(list((str(num))[3:6:]))))))
+                    return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand "+str(hundreds(int(''.join(list((str(num))[3:6:]))))))
             else:
-                print (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand "+str(hundreds(int(''.join(list((str(num))[3:6:]))))))
-                    ####
+                return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand "+str(hundreds(int(''.join(list((str(num))[3:6:]))))))
         else:
-            print (str(hundreds(int(''.join(str(num)[0:3]))))+" thousand")
+            return (str(hundreds(int(''.join(str(num)[0:3]))))+" thousand")
+
+def millions(num):
+    if num < 1000000:
+        print(tenthousands(num))
+    else:
+        n = '{:09}'.format(num)
+        if int(list(str(n))[::-1][4])+int(list(str(n))[::-1][3])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
+            print (str(hundreds(int(''.join(list((str(num))[0:1:]))))) + " million " + str(hundredthousands(int(''.join(list((str(num))[1:7:]))))))
+        else:
+            print(tens(int(''.join(list((str(num))[0:1:])))) + " million")
 
 
-hundredthousands(900666)
+millions(9993499)
     
 
