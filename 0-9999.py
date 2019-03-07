@@ -241,9 +241,12 @@ def thousands(num):
         return(hundreds(num))
     else:
         n = '{:04}'.format(num)
-        if int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
+        if int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:                
             if int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 100:
-                return (str(tens(int(''.join(str(num)[0]))))+" thousand and "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
+                if int(list(str(n))[::-1][0]) !=0:
+                    return (str(tens(int(''.join(str(num)[0]))))+" thousand")
+                else:
+                    return (str(tens(int(''.join(str(num)[0]))))+" thousand and "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
             else:
                 return (str(tens(int(''.join(str(num)[0]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
         else:
@@ -256,7 +259,10 @@ def tenthousands(num):
         n = '{:05}'.format(num)
         if int(list(str(n))[::-1][3])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
             if int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 100:
-                return (str(tens(int(''.join(str(num)[0:2]) )))+" thousand and "+str(hundreds(int(''.join(list((str(num))[2:5:]))))))
+                if int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) !=0:
+                    return (str(tens(int(''.join(str(num)[0:2]) )))+" thousand and "+str(hundreds(int(''.join(list((str(num))[2:5:]))))))
+                else:
+                    return (str(tens(int(''.join(str(num)[0:2]) )))+" thousand")
             else:
                 return (str(tens(int(''.join(str(num)[0:2]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[2:5:]))))))
         else:
@@ -270,11 +276,19 @@ def hundredthousands(num):
         if int(list(str(n))[::-1][4])+int(list(str(n))[::-1][3])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
             if int(list(str(n))[::-1][3]+list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 1000:
                 if int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 100:
-                    return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand and "+str(tens(int(''.join(list((str(num))[3:6:]))))))
+                    if int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) !=0:
+                        return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand and "+str(hundreds(int(''.join(list((str(num))[3:6:]))))))
+                    else:
+                        return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand")
                 else:
                     return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand "+str(hundreds(int(''.join(list((str(num))[3:6:]))))))
+            elif int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) !=0:
+                return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand and "+str(thousands(int(''.join(list((str(num))[3:6:]))))))
             else:
-                return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand "+str(hundreds(int(''.join(list((str(num))[3:6:]))))))
+                if int(list(str(n))[::-1][0]) !=0:
+                    return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand "+str(thousands(int(''.join(list((str(num))[3:6:]))))))
+                else:
+                    return (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand ")
         else:
             return (str(hundreds(int(''.join(str(num)[0:3]))))+" thousand")
 
@@ -289,6 +303,6 @@ def millions(num):
             print(tens(int(''.join(list((str(num))[0:1:])))) + " million")
 
 
-millions(320001)
+millions(9133330)
     
 
