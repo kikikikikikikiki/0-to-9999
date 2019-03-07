@@ -271,6 +271,8 @@ def hundredthousands(num):
             if int(list(str(n))[::-1][3]+list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 1000:
                 if int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 100:
                     print (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand and "+str(tens(int(''.join(list((str(num))[3:6:]))))))
+                else:
+                    print (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand "+str(hundreds(int(''.join(list((str(num))[3:6:]))))))
             else:
                 print (str(hundreds(int(''.join(str(num)[0:3]) )))+" thousand "+str(hundreds(int(''.join(list((str(num))[3:6:]))))))
                     ####
@@ -278,6 +280,6 @@ def hundredthousands(num):
             print (str(hundreds(int(''.join(str(num)[0:3]))))+" thousand")
 
 
-hundredthousands(231199)
+hundredthousands(900666)
     
 
