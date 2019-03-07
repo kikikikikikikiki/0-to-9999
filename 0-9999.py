@@ -1,5 +1,8 @@
 def tens(num):
+    #Formats num into a four digit number e.g. num = 1 -> n = 0001
+    #The number is to be z
     n = '{:04}'.format(num)
+    print(n)
     if int(list(str(n))[::-1][0])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][3]) == 0:
                 return("zero")
     elif int(list(str(n))[::-1][0])+int(list(str(n))[::-1][1]) == 1:
@@ -38,7 +41,7 @@ def tens(num):
         if int(list(str(n))[::-1][0]) == 5:
                 return("five")
         if int(list(str(n))[::-1][0]) == 4:
-                return("fifteen")
+                return("fourteen")
         if int(list(str(n))[::-1][0]) == 3:
                 return("twenty three")
         if int(list(str(n))[::-1][0]) == 2:
@@ -70,7 +73,7 @@ def tens(num):
         if int(list(str(n))[::-1][0]) == 5:
                 return("twenty five")
         if int(list(str(n))[::-1][0]) == 4:
-                return("thirty seven")
+                return("thirty four")
         if int(list(str(n))[::-1][0]) == 3:
                 return("forty three")
         if int(list(str(n))[::-1][0]) == 2:
@@ -234,19 +237,21 @@ def hundreds(num):
 
 
 def thousands(num):
+    n = '{:04}'.format(num)
+    print(int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]))
     if num < 1000:
         print(hundreds(num))
     else:
         n = '{:04}'.format(num)
-        if int(list(str(n))[::-1][0]) + int(list(str(n))[::-1][1]) + int(list(str(n))[::-1][2]) + int(list(str(n))[::-1][3]) == 1:
-            print ("one thousand")
-        if int(list(str(n))[::-1][1]) + int(list(str(n))[::-1][2]) + int(list(str(n))[::-1][3]) >= 2:
-            if int(list(str(n))[::-1][0]) != 0:
-                print (str(tens(int(''.join(str(num)[0]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
+        if int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
+            if int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 100:
+                print (str(tens(int(''.join(str(num)[0]))))+" thousand and "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
             else:
-                print (str(tens(int(''.join(str(num)[0]))))+" thousand")
-        
-for x in range(9999):
-    thousands(x)
+                print (str(tens(int(''.join(str(num)[0]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
+        else:
+            print (str(tens(int(''.join(str(num)[0]))))+" thousand")
+    
+
+thousands(1401)
     
 
