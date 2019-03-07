@@ -280,15 +280,15 @@ def hundredthousands(num):
 
 def millions(num):
     if num < 1000000:
-        print(tenthousands(num))
+        print(hundredthousands(num))
     else:
         n = '{:09}'.format(num)
-        if int(list(str(n))[::-1][4])+int(list(str(n))[::-1][3])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
+        if int(list(str(n))[::-1][5])+int(list(str(n))[::-1][4])+int(list(str(n))[::-1][3])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:
             print (str(hundreds(int(''.join(list((str(num))[0:1:]))))) + " million " + str(hundredthousands(int(''.join(list((str(num))[1:7:]))))))
         else:
             print(tens(int(''.join(list((str(num))[0:1:])))) + " million")
 
 
-millions(9993499)
+millions(320001)
     
 
