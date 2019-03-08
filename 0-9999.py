@@ -244,9 +244,9 @@ def thousands(num):
         if int(list(str(n))[::-1][2])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][0]) != 0:                
             if int(list(str(n))[::-1][2]+list(str(n))[::-1][1]+list(str(n))[::-1][0]) < 100:
                 if int(list(str(n))[::-1][0]) !=0:
-                    return (str(tens(int(''.join(str(num)[0]))))+" thousand")
-                else:
                     return (str(tens(int(''.join(str(num)[0]))))+" thousand and "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
+                else:
+                    return (str(tens(int(''.join(str(num)[0]))))+" thousand")
             else:
                 return (str(tens(int(''.join(str(num)[0]))))+" thousand "+str(hundreds(int(''.join(list((str(num))[1:4:]))))))
         else:
@@ -303,6 +303,7 @@ def millions(num):
             print(tens(int(''.join(list((str(num))[0:1:])))) + " million")
 
 
-millions(9133330)
+for x in range(10000000):
+    millions(x)
     
 
