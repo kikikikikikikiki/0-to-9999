@@ -1,6 +1,5 @@
 def tens(num):
     #Formats num into a four digit number e.g. num = 1 -> n = 0001
-    #The number is to be z
     n = '{:04}'.format(num)
     if int(list(str(n))[::-1][0])+int(list(str(n))[::-1][1])+int(list(str(n))[::-1][2])+int(list(str(n))[::-1][3]) == 0:
                 return("zero")
